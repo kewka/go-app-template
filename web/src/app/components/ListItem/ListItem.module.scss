@@ -1,0 +1,14 @@
+@import 'app/styles/mixins.scss';
+
+.root {
+  list-style-type: none;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  @include gutters;
+  display: flex;
+  align-items: center;
+
+  &.divider {
+    border-bottom: 1px solid var(--divider-color);
+  }
+}

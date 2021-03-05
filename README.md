@@ -1,6 +1,7 @@
 # Go app template
 
 ## Requirements
+
 - Go **1.16+**
 - docker-compose **1.27.0+**
 
@@ -21,51 +22,50 @@ $ make unit-test
 $ make test
 ```
 
-## HTTP API Server
+## Service HTTP API
 
-[Swagger](pkg/httphandler/swagger/swagger.yaml)
+[Swagger](api/service/swagger.yaml)
 
+## Usage
 
-### Usage
 ```sh
-$ ./api-server -help
-Usage of ./api-server:
+$ ./app -help
+Usage of ./app:
   -port string
-        server port (default "4000")
+        http server port (default "4000")
 ```
 
 ### Locally
+
 ```sh
-# Create env file
 $ make -B .env env=local
-# Run dependencies (postgres, redis, etc...)
 $ make deps
-# Apply database migrations
-$ ./scripts/env.sh ./scripts/migrate.sh up
-# Run api-server
-$ go run ./cmd/api-server
+$ make migrate-up
+# build web spa
+$ cd web/ && yarn && yarn build && cd -
+$ go run ./cmd/app
 ```
 
 ### Dockerizing
+
 ```sh
-# Create env file
 $ make -B .env env=docker
-# Apply database migrations
-$ ./scripts/env.sh ./scripts/migrate.sh up
-# Up service
-$ docker-compose up api-server
+$ make migrate-up
+$ docker-compose up app
 ```
 
-
 ## Database migrations
+
 [migrate](https://github.com/golang-migrate/migrate) - CLI and Golang library.
 
 ### Up
+
 ```sh
 $ ./scripts/env.sh ./scripts/migrate.sh up
 ```
 
 ### Down
+
 ```sh
 $ ./scripts/env.sh ./scripts/migrate.sh down
 ```

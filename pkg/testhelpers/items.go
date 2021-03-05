@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/jackc/pgx/v4/pgxpool"
-	"github.com/kewka/go-app-template/pkg/app"
+	"github.com/kewka/go-app-template/pkg/service"
 )
 
 // ClearItems ...
@@ -16,8 +16,8 @@ func ClearItems(dbpool *pgxpool.Pool) {
 }
 
 // CreateItem ...
-func CreateItem(dbpool *pgxpool.Pool, name string) app.ItemModel {
-	ret := app.ItemModel{}
+func CreateItem(dbpool *pgxpool.Pool, name string) service.ItemModel {
+	ret := service.ItemModel{}
 	err := dbpool.QueryRow(
 		context.Background(),
 		"INSERT INTO items (name) VALUES ($1) RETURNING id, name",

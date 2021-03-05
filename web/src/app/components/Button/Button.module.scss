@@ -1,0 +1,72 @@
+@import 'app/styles/mixins.scss';
+
+.root {
+  background: none;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  @include typography-button;
+  transition: opacity 150ms ease-in-out;
+  &:hover {
+    opacity: 0.85;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &.block {
+      width: 100%;
+  }
+
+  &.variantText {
+    padding: 6px 8px;
+    &.colorDefault {
+      color: var(--primary-text-color);
+    }
+    &.colorPrimary {
+      color: var(--primary-color);
+    }
+    &.colorSecondary {
+      color: var(--secondary-color);
+    }
+  }
+
+  &.variantOutlined {
+    border-radius: 4px;
+    padding: 5px 15px;
+    &.colorDefault {
+      border: 1px solid var(--primary-text-color);
+      color: var(--primary-text-color);
+    }
+    &.colorPrimary {
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+    }
+    &.colorSecondary {
+      border: 1px solid var(--secondary-color);
+      color: var(--secondary-color);
+    }
+  }
+
+  &.variantContained {
+    border-radius: 4px;
+    padding: 6px 16px;
+
+    &.colorDefault {
+      background: var(--divider-color);
+      color: var(--primary-text-color);
+    }
+    &.colorPrimary {
+      background: var(--primary-color);
+      color: var(--primary-color-text);
+    }
+    &.colorSecondary {
+      background: var(--secondary-color);
+      color: var(--secondary-color-text);
+    }
+  }
+}

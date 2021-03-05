@@ -1,0 +1,10 @@
+@import 'app/styles/mixins.scss';
+
+.root {
+  @include container;
+  padding-top: var(--header-height);
+
+  &.fullHeight {
+    min-height: 100vh;
+  }
+}

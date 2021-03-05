@@ -1,0 +1,78 @@
+definitions:
+  service.ErrorResponse:
+    properties:
+      message:
+        type: string
+    required:
+    - message
+    type: object
+  service.ItemModel:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    required:
+    - id
+    - name
+    type: object
+  service.ItemsListResponse:
+    properties:
+      count:
+        type: integer
+      items:
+        items:
+          $ref: '#/definitions/service.ItemModel'
+        type: array
+    required:
+    - count
+    - items
+    type: object
+info:
+  contact: {}
+  title: Service HTTP API.
+  version: "1.0"
+paths:
+  /:
+    get:
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Hello world.
+      tags:
+      - common
+  /items:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/service.ItemsListResponse'
+      summary: Get items.
+      tags:
+      - items
+  /items/{id}:
+    get:
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/service.ItemModel'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/service.ErrorResponse'
+      summary: Get item by id.
+      tags:
+      - items
+swagger: "2.0"

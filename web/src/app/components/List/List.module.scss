@@ -1,0 +1,14 @@
+@import 'app/styles/mixins.scss';
+
+.root {
+  padding: 0;
+  margin: 0;
+}
+
+.subheader {
+  @include gutters;
+  color: var(--secondary-text-color);
+  line-height: 48px;
+  font-weight: 500;
+  font-size: rem(14px);
+}

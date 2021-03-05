@@ -14,10 +14,13 @@ psql:
 	@docker-compose exec postgres psql -U ${POSTGRES_USER} ${POSTGRES_DB}
 
 swagger:
-	@swag init -g pkg/httphandler/httphandler.go -o pkg/httphandler/swagger
+	@swag init -g pkg/service/http_handler.go -o api/service
+
+migrate-up:
+	@./scripts/migrate.sh up
 
 unit-test:
-	@go test -short -v -cover -race ./...
+	@go test -short -v -race ./...
 
 test-deps: deps
 test-deps:

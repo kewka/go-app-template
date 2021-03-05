@@ -15,10 +15,8 @@ services:
     depends_on:
       - postgres
     command: migrate -help
-  api-server:
-    build:
-      context: .
-      dockerfile: ./docker/api-server/Dockerfile
+  app:
+    build: .
     ports:
       - 80:4000
     env_file: .env

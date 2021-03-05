@@ -1,0 +1,3 @@
+node_modules
+build
+src/app/api/generated-schema.ts

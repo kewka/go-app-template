@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
+@import '~normalize.css';
+@import './mixins.scss';
+
+:root {
+  --background-color: #ffffff;
+  --primary-color: #303f9f;
+  --primary-color-light: #666ad1;
+  --primary-color-dark: #001970;
+  --secondary-color: #00796b;
+  --secondary-color-light: #48a999;
+  --secondary-color-dark: #004c40;
+  --primary-color-text: #ffffff;
+  --secondary-color-text: #ffffff;
+  --primary-text-color: #212121;
+  --secondary-text-color: #757575;
+  --divider-color: #bdbdbd;
+  --header-height: 56px;
+}
+
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+[data-js-focus-visible] :focus:not([data-focus-visible-added]) {
+  outline: none;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--primary-text-color);
+  background: var(--background-color);
+  @include typography-body;
+}
